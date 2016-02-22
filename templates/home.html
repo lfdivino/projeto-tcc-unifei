@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+
+<style>
+    {% block style %}
+        .text-align-center {
+            text-align: center;
+            color: red;
+        }
+    {% endblock %}
+</style>
+
+{% block jumbotron_content %}
+<!-- Main component for a primary marketing message or call to action -->
+<div class ="row">
+    <div class="col-sm-8">
+
+        <h1>Try Django 1.8</h1>
+        <p class="lead text-align-center">The MVP Landing project is designed to get your project started. The goal is to help you lanch as soon as possible</p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
+        </p>
+
+    </div>
+    <div class="col-sm-4" style="background-color:black;height:300px;">
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+    {% for pergunta in perguntas %}
+        <form action="/" method="POST">{% csrf_token %}
+            <h2>{{ pergunta.pergunta }}</h2>
+            <input type="hidden" name="pergunta_id" value="{{pergunta.id}}" />
+            <div class="row">
+                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block" type="submit" value="1">1</button></div>
+                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block" type="submit" value="2">2</button></div>
+                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block" type="submit" value="3">3</button></div>
+                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block" type="submit" value="4">4</button></div>
+                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block" type="submit" value="5">5</button></div>
+            </div>
+        </form>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

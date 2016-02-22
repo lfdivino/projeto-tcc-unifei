@@ -6,8 +6,8 @@ from django.contrib import admin
 urlpatterns = [
     # Examples:
     url(r'^$', 'tcc.views.home', name='home'),
-    url(r'^configuracao/$', 'tcc.views.configuracao', name='configuracao'),
-    url(r'^contato/$', 'tcc.views.contato', name='contato'),
+    # url(r'^configuracao/$', 'tcc.views.configuracao', name='configuracao'),
+    # url(r'^contato/$', 'tcc.views.contato', name='contato'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

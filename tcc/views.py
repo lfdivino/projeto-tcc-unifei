@@ -1,6 +1,7 @@
+import datetime
 from django.shortcuts import render
 from .forms import ContactForm, SignUpForm
-from .models import Perguntas
+from .models import Perguntas, Respostas
 
 
 def home(request):
@@ -9,7 +10,15 @@ def home(request):
     perguntas = Perguntas.objects.all()
 
     if request.method == "POST":
-        print (request.POST)
+        print(request.POST)
+        resposta_pergunta = request.POST
+        pergunta = Perguntas.objects.get(pk=resposta_pergunta["pergunta_id"])
+        respostas = Respostas(
+            id_pergunta=pergunta,
+            resposta=resposta_pergunta["resposta"],
+            data_resposta=datetime.date.today()
+        )
+        respostas.save()
 
     context = {
         'template_title': title,
