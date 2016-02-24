@@ -1,17 +1,26 @@
 from django.contrib import admin
 from .models import Usuarios, Perguntas, PerguntasRespondidasUsuarios, Respostas
-from .forms import SignUpForm, PerguntaForm
+from .forms import SignUpForm, PerguntaForm, RespostaForm
+
 
 class SignUpAdmin(admin.ModelAdmin):
-    list_display = ["__unicode__", "timestamp", "updated"]
+    list_display = ["__str__", "timestamp", "updated"]
     form = SignUpForm
     # class Meta:
     #     model = SignUp
 
+
 class PerguntaAdmin(admin.ModelAdmin):
-    list_display = ["__unicode__", "pergunta", "ativa"]
+    list_display = ["__str__", "ativa"]
     form = PerguntaForm
     # class Meta:
     #     model = Perguntas
 
-admin.site.register([Usuarios, Perguntas, PerguntasRespondidasUsuarios, Respostas])
+
+class RespostaAdmin(admin.ModelAdmin):
+    list_display = ["__str__", "id_pergunta", "data_resposta"]
+    form = RespostaForm
+
+
+admin.site.register(Perguntas, PerguntaAdmin)
+admin.site.register(Respostas, RespostaAdmin)

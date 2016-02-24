@@ -10,7 +10,7 @@ class Usuarios(models.Model):
     matricula = models.IntegerField(blank=True, null=True)
     formatura = models.DateField(blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nome_completo
 
 
@@ -19,7 +19,7 @@ class Perguntas(models.Model):
     pergunta = models.TextField(blank=False, null=False)
     ativa = models.BooleanField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.pergunta
 
 
@@ -37,8 +37,8 @@ class Respostas(models.Model):
     resposta = models.IntegerField(blank=False, null=False)
     data_resposta = models.DateField(blank=False, null=False)
 
-    def __unicode__(self):
-        return self.resposta
+    def __str__(self):
+        return str(self.resposta)
 
 
 class SignUp(models.Model):
@@ -47,5 +47,5 @@ class SignUp(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):  # Python 3+ is __str__
+    def __str__(self):  # Python 3+ is __str__
         return self.email

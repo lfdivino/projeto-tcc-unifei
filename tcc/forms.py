@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignUp, Perguntas
+from .models import SignUp, Perguntas, Respostas
 
 
 class ContactForm(forms.Form):
@@ -27,3 +27,14 @@ class PerguntaForm(forms.ModelForm):
     class Meta:
         model = Perguntas
         fields = ['pergunta', 'ativa']
+
+
+class CustomUserChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+         return obj.get_full_name()
+
+
+class RespostaForm(forms.ModelForm):
+    class Meta:
+        model = Respostas
+        fields = ['id_pergunta', 'resposta', 'data_resposta']
