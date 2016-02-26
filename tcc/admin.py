@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Usuarios, Perguntas, PerguntasRespondidasUsuarios, Respostas
-from .forms import SignUpForm, PerguntaForm, RespostaForm
+from .forms import SignUpForm, PerguntaForm, RespostaForm, PerguntasRespondidasUsuariosForm
 
 
 class SignUpAdmin(admin.ModelAdmin):
@@ -22,5 +22,11 @@ class RespostaAdmin(admin.ModelAdmin):
     form = RespostaForm
 
 
+class PerguntasRespostasUsuarioAdmin(admin.ModelAdmin):
+    list_display = ['id_usuario', 'id_pergunta']
+    form = PerguntasRespondidasUsuariosForm
+
+
 admin.site.register(Perguntas, PerguntaAdmin)
 admin.site.register(Respostas, RespostaAdmin)
+admin.site.register(PerguntasRespondidasUsuarios, PerguntasRespostasUsuarioAdmin)

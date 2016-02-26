@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.mail.yahoo.com.br'
+EMAIL_HOST_USER = 'lf.divino@yahoo.com'
+EMAIL_HOST_PASSWORD = 'sampa1621'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+
 
 # Application definition
 
@@ -35,10 +41,13 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tcc',
+    #third party apps
     'crispy_forms',
+    'registration',
+    'tcc',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +119,9 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 # Crispy Forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_URL = 'accounts/login'
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'

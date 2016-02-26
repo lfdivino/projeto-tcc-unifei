@@ -1,14 +1,15 @@
 import datetime
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .forms import ContactForm, SignUpForm
-from .models import Perguntas, Respostas
+from .models import Perguntas, Respostas, PerguntasRespondidasUsuarios
 
 
+@login_required
 def home(request):
     title = "My Title"
     form = SignUpForm()
-    perguntas = Perguntas.objects.all()
-
+    perguntas = Perguntas.objects.all().exclude(id__in=PerguntasRespondidasUsuarios.objects.values_list('id_pergunta', flat=True).filter(id_usuario=request.user))
     if request.method == "POST":
         print(request.POST)
         resposta_pergunta = request.POST

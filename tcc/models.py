@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Usuarios(models.Model):
@@ -27,7 +28,7 @@ class PerguntasRespondidasUsuarios(models.Model):
     class Meta:
         unique_together = (('id_usuario', 'id_pergunta'),)
 
-    id_usuario = models.ForeignKey(Usuarios)
+    id_usuario = models.ForeignKey(User)
     id_pergunta = models.ForeignKey(Perguntas)
 
 

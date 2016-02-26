@@ -7,6 +7,15 @@
         <li><a href="/configuracao">Configuracao</a></li>
         <li><a href="/contato">Contato</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if request.user.is_authenticated %}
+          <li><a>Olá {{ request.user }}</a></li>
+          <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'auth_login' %}">Login</a></li>
+          <li><a href="{% url 'registration_register' %}">Registrar</a></li>
+        {% endif %}
+      </ul>
     </div><!--/.nav-collapse -->
   </div>
 </nav>

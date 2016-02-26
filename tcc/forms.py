@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignUp, Perguntas, Respostas
+from .models import SignUp, Perguntas, Respostas, PerguntasRespondidasUsuarios
 
 
 class ContactForm(forms.Form):
@@ -38,3 +38,8 @@ class RespostaForm(forms.ModelForm):
     class Meta:
         model = Respostas
         fields = ['id_pergunta', 'resposta', 'data_resposta']
+
+class PerguntasRespondidasUsuariosForm(forms.ModelForm):
+    class Meta:
+        model = PerguntasRespondidasUsuarios
+        fields = ['id_usuario', 'id_pergunta']
