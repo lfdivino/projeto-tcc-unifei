@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+{% block head_title %}Seja bem vindo {{ request.user }}{% endblock %}
 
 <style>
     {% block style %}

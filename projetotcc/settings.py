@@ -37,6 +37,7 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,13 @@ INSTALLED_APPS = (
     'crispy_forms',
     'registration',
     'tcc',
+    'rest_framework',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,6 +86,7 @@ TEMPLATES = [
     },
 ]
 
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 WSGI_APPLICATION = 'projetotcc.wsgi.application'
 
 
