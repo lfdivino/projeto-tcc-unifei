@@ -32,21 +32,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-
+<div class="row" style="position: relative">
     {% for pergunta in perguntas %}
-        <form action="/" method="POST">{% csrf_token %}
-            <h2>{{ pergunta.pergunta }}</h2>
-            <input type="hidden" name="pergunta_id" value="{{pergunta.id}}" />
-            <div class="row">
-                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_1" type="submit" value="1">1</button></div>
-                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_2" type="submit" value="2">2</button></div>
-                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_3" type="submit" value="3">3</button></div>
-                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_4" type="submit" value="4">4</button></div>
-                <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_5" type="submit" value="5">5</button></div>
-            </div>
-        </form>
-
+        {% if pergunta.id == primeira_pergunta %}
+            <div id="{{pergunta.id}}" class="perguntas" style='position: absolute; top:0;left:0'>
+        {% else %}
+            <div id="{{pergunta.id}}" class="perguntas invisivel" style='position: absolute; top:0;left:0'>
+        {% endif %}
+                <h2>{{ pergunta.pergunta }}</h2>
+                <input type="hidden" name="pergunta_id" value="{{pergunta.id}}" />
+                <div class="row">
+                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_1" value="1">1</button></div>
+                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_2" value="2">2</button></div>
+                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_3" value="3">3</button></div>
+                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_4" value="4">4</button></div>
+                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_5" value="5">5</button></div>
+                </div>
+        </div>
     {% endfor %}
 
 </div>

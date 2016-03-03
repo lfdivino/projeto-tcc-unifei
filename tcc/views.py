@@ -23,24 +23,11 @@ def home(request):
             )
     ).filter(ativa=True)
 
-    if request.method == "POST":
-        print(request.POST)
-        resposta_pergunta = request.POST
-        pergunta = Perguntas.objects.get(pk=resposta_pergunta["pergunta_id"])
-        respostas = Respostas(
-            id_pergunta=pergunta,
-            resposta=resposta_pergunta["resposta"],
-            data_resposta=datetime.date.today()
-        )
-        respostas.save()
-        pergunta_resposta_user = PerguntasRespondidasUsuarios(
-            id_usuario = request.user,
-            id_pergunta = pergunta
-        )
-        pergunta_resposta_user.save()
+    primeira_pergunta = perguntas[0].id
 
     context = {
         'perguntas': perguntas,
+        'primeira_pergunta': primeira_pergunta,
     }
     return render(request, "home.html", context)
 
@@ -69,7 +56,6 @@ def about(request):
     return render(request, "about.html", context)
 
 
-
 class JSONResponse(HttpResponse):
     """
     An HttpResponse that renders its content into JSON.
@@ -82,13 +68,13 @@ class JSONResponse(HttpResponse):
 
 @csrf_exempt
 def respostateste(request):
-
     if request.method == 'GET':
-        snippets = Respostas.objects.all()
-        serializer = RespostasSerializer(snippets, many=True)
-        return JSONResponse(serializer.data)
+        respostas = Respostas.objects.all()
+        respostas = RespostasSerializer(respostas, many=True)
+        return JSONResponse(respostas.data)
 
     elif request.method == 'POST':
+        print("TESTE: ")
         data = JSONParser().parse(request)
         resposta = RespostasSerializer(data=data)
         if resposta.is_valid():
@@ -127,4 +113,3 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-

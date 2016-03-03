@@ -22,3 +22,11 @@
     background-color: #000080;
     color: #ffffff;
 }
+
+.invisivel {
+    visibility: hidden;
+}
+
+.perguntas {
+    padding: 5%;
+}
