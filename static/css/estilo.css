@@ -1,3 +1,18 @@
+.navbar-default {
+    background-color: #4682B4;
+    border-color: #FFD700;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-size: 14px;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
 .resposta_1 {
     background-color: #800000;
     color: #ffffff;
@@ -27,6 +42,44 @@
     visibility: hidden;
 }
 
-.perguntas {
-    padding: 5%;
+.perguntas .sem-perguntas {
+    padding-top: 5%;
+}
+
+.sem-perguntas {
+    padding-top: 5%;
+}
+
+.panel.panel-form, .panel.panel-form .panel-heading, .panel.panel-form .panel-footer {
+    border-radius: 0;
+}
+
+.panel.panel-form {
+    border: 1px solid #e6e6e6;
+}
+
+.panel {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.panel.panel-form .panel-heading {
+    background: #4682B4 none repeat scroll 0 0;
+    border-bottom: 7px solid #eee;
+    color: #d6f5ff;
+    text-align: center;
+}
+
+.panel.panel-form .panel-body {
+    background: #fcfcfc none repeat scroll 0 0;
+    padding: 30px;
+}
+
+.panel.panel-form .panel-footer {
+    background: #f6f6f6 none repeat scroll 0 0;
+    border-top: 1px solid #e6e6e6;
+    color: #aaa;
 }

@@ -22,13 +22,18 @@ def home(request):
                     id_usuario=request.user
             )
     ).filter(ativa=True)
+    if perguntas:
+        primeira_pergunta = perguntas[0].id
 
-    primeira_pergunta = perguntas[0].id
+        context = {
+            'perguntas': perguntas,
+            'primeira_pergunta': primeira_pergunta,
+        }
+    else:
+        context = {
+            'perguntas': perguntas
+        }
 
-    context = {
-        'perguntas': perguntas,
-        'primeira_pergunta': primeira_pergunta,
-    }
     return render(request, "home.html", context)
 
 
@@ -67,20 +72,49 @@ class JSONResponse(HttpResponse):
 
 
 @csrf_exempt
-def respostateste(request):
+def resposta(request):
     if request.method == 'GET':
         respostas = Respostas.objects.all()
         respostas = RespostasSerializer(respostas, many=True)
         return JSONResponse(respostas.data)
 
     elif request.method == 'POST':
-        print("TESTE: ")
-        data = JSONParser().parse(request)
-        resposta = RespostasSerializer(data=data)
-        if resposta.is_valid():
-            resposta.save()
-            return JSONResponse(resposta.data, status=201)
-        return JSONResponse(resposta.errors, status=400)
+        json_resposta = JSONParser().parse(request)
+        resposta = json_resposta
+        login = json_resposta['login']
+        password = json_resposta['password']
+        del resposta['login']
+        del resposta['password']
+        usuario = User.objects.get(username=login, password=password)
+        if usuario:
+            pergunta = Perguntas.objects.get(pk=int(resposta['id_pergunta']))
+            if PerguntasRespondidasUsuarios.objects.filter(id_pergunta=pergunta.id).filter(id_usuario=usuario.id):
+                data = {
+                    'resposta': "Pergunta ja respondida pelo usuario"
+                }
+                return JSONResponse(data)
+            else:
+                if resposta:
+                    resposta_obj = Respostas.objects.create(id_pergunta=pergunta, resposta=resposta['resposta'])
+                    resposta_obj.save()
+                    pergunta_respondida_usuario_obj = PerguntasRespondidasUsuarios.objects.create(
+                            id_usuario=usuario,
+                            id_pergunta=pergunta
+                    )
+                    pergunta_respondida_usuario_obj.save()
+                    data = {
+                        'resposta': True
+                    }
+                    return JSONResponse(data)
+                data = {
+                    'resposta': "Ocorreu um erro ao salvar a resposta, tente novamente"
+                }
+                return JSONResponse(data)
+        else:
+            data = {
+                'resposta': "Ocorreu um erro ao salvar a resposta, tente novamente"
+            }
+            return JSONResponse(data)
 
 
 class PerguntaViewSet(viewsets.ModelViewSet):

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +38,7 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = (
-    'bootstrap_admin',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +46,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #third party apps
     'crispy_forms',
     'registration',
     'tcc',
@@ -86,7 +86,6 @@ TEMPLATES = [
     },
 ]
 
-BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 WSGI_APPLICATION = 'projetotcc.wsgi.application'
 
 
@@ -129,7 +128,24 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 LOGIN_URL = 'accounts/login'
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = True
+ACCOUNT_ACTIVATION_DAYS = 0
+REGISTRATION_AUTO_LOGIN = False
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'TCC Divino',
+    'MENU': (
+        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
+        {'app': 'tcc', 'icon': 'icon-cog', 'models': (
+            'tcc.Perguntas',
+            'tcc.Respostas',
+            'tcc.PerguntasRespondidasUsuarios'
+        )},
+    ),
+}

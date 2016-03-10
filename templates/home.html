@@ -35,22 +35,61 @@
 <div class="row" style="position: relative">
     {% for pergunta in perguntas %}
         {% if pergunta.id == primeira_pergunta %}
-            <div id="{{pergunta.id}}" class="perguntas" style='position: absolute; top:0;left:0'>
+            <div id="{{pergunta.id}}" class="perguntas visivel" style='position: absolute; top:0;left:0; min-width: 100%'>
         {% else %}
-            <div id="{{pergunta.id}}" class="perguntas invisivel" style='position: absolute; top:0;left:0'>
+            <div id="{{pergunta.id}}" class="perguntas invisivel" style='position: absolute; top:0;left:0; min-width: 100%'>
         {% endif %}
-                <h2>{{ pergunta.pergunta }}</h2>
-                <input type="hidden" name="pergunta_id" value="{{pergunta.id}}" />
-                <div class="row">
-                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_1" value="1">1</button></div>
-                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_2" value="2">2</button></div>
-                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_3" value="3">3</button></div>
-                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_4" value="4">4</button></div>
-                    <div class="col-xs-4 col-sm-2"><button name="resposta" class="btn btn-default btn-block resposta_5" value="5">5</button></div>
+                <div class="panel panel-form">
+                    <div class="panel-heading">
+                        <h2>{{ pergunta.pergunta }}</h2>
+                        <input type="hidden" name="pergunta_id" value="{{pergunta.id}}" />
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2"><button name="resposta" class="btn btn-default btn-block btn-respostas resposta_1" value="1">1</button></div>
+                            <div class="col-xs-4 col-md-2"><button name="resposta" class="btn btn-default btn-block btn-respostas resposta_2" value="2">2</button></div>
+                            <div class="col-xs-4 col-md-2"><button name="resposta" class="btn btn-default btn-block btn-respostas resposta_3" value="3">3</button></div>
+                            <div class="col-xs-4 col-md-2"><button name="resposta" class="btn btn-default btn-block btn-respostas resposta_4" value="4">4</button></div>
+                            <div class="col-xs-4 col-md-2"><button name="resposta" class="btn btn-default btn-block btn-respostas resposta_5" value="5">5</button></div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        Para responder basta clicar em um dos botoes com a resposta
+                    </div>
                 </div>
-        </div>
-    {% endfor %}
+            </div>
 
+
+    {% endfor %}
+    {% if perguntas %}
+        <div class="sem-perguntas invisivel" style='position: absolute; top:0;left:0; min-width: 100%'>
+            <div class="panel panel-form">
+                <div class="panel-heading">
+                    <h2>Obrigado!</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Não existem novas perguntas, assim que forem registradas nós te avisaremos.</h3>
+                </div>
+                <div class="panel-footer">
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="sem-perguntas" style='position: absolute; top:0;left:0; min-width: 100%'>
+            <div class="panel panel-form">
+                <div class="panel-heading">
+                    <h2>Obrigado!</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Não existem novas perguntas, assim que forem registradas nós te avisaremos.</h3>
+                </div>
+                <div class="panel-footer">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <input type="hidden" id="login" name="login" value="{{ request.user.username }}" />
+    <input type="hidden" id="password" name="password" value="{{ request.user.password }}" />
 </div>
 
 {% endblock %}
