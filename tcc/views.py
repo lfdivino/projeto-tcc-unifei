@@ -1,4 +1,7 @@
 import datetime
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import status
@@ -59,6 +62,17 @@ def about(request):
 
     }
     return render(request, "about.html", context)
+
+
+@staff_member_required
+def analise_dados(request):
+    context = {
+        'title': 'Custom view',
+    }
+
+    template = 'admin/analise_dados.html'
+    return render_to_response(template, context,
+                              context_instance=RequestContext(request))
 
 
 class JSONResponse(HttpResponse):
@@ -147,3 +161,4 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+

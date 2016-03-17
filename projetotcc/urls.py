@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^$', 'tcc.views.home', name='home'),
     # url(r'^configuracao/$', 'tcc.views.configuracao', name='configuracao'),
     # url(r'^contato/$', 'tcc.views.contato', name='contato'),
+    url(r'^admin/analise/$', views.analise_dados),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^', include(router.urls)),

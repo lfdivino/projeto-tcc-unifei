@@ -25,7 +25,7 @@ $(".btn-respostas").click(function(){
                 } else {
                     $(".sem-perguntas").removeClass("invisivel");
                 }
-                    
+
             } else {
                 alert(result['resposta']);
             }

@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -134,6 +133,9 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 
+# Add request to the templates
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
@@ -146,6 +148,9 @@ SUIT_CONFIG = {
             'tcc.Perguntas',
             'tcc.Respostas',
             'tcc.PerguntasRespondidasUsuarios'
+        )},
+        {'label': 'Analise dos Dados', 'icon': 'icon-cog', 'models': (
+            {'label': 'Analise dos Dados', 'url': '/admin/analise/'},
         )},
     ),
 }
