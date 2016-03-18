@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from .models import Perguntas, Respostas, PerguntasRespondidasUsuarios
+from .models import Perguntas, Respostas
 from rest_framework import serializers
 
 
@@ -12,16 +12,10 @@ class RespostasSerializer(serializers.ModelSerializer):
 class PerguntasSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Perguntas
-        fields = ('pergunta', 'ativa')
+        fields = ('id', 'pergunta', 'ativa')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'username', 'email', 'groups')
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ('url', 'name')

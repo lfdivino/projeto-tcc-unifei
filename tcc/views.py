@@ -11,7 +11,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from .serializers import UserSerializer, GroupSerializer, PerguntasSerializer, RespostasSerializer
+from .serializers import UserSerializer, PerguntasSerializer, RespostasSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .forms import ContactForm
@@ -67,7 +67,7 @@ def about(request):
 @staff_member_required
 def analise_dados(request):
     context = {
-        'title': 'Custom view',
+        'title': 'Analise dos Dados'
     }
 
     template = 'admin/analise_dados.html'
@@ -86,7 +86,7 @@ class JSONResponse(HttpResponse):
 
 
 @csrf_exempt
-def resposta(request):
+def respostas(request):
     if request.method == 'GET':
         respostas = Respostas.objects.all()
         respostas = RespostasSerializer(respostas, many=True)
@@ -131,34 +131,9 @@ def resposta(request):
             return JSONResponse(data)
 
 
-class PerguntaViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Perguntas.objects.all()
-    serializer_class = PerguntasSerializer
-
-
-# class RespostaViewSet(viewsets.ModelViewSet):
-#     """
-#     API endpoint that allows users to be viewed or edited.
-#     """
-#     queryset = Respostas.objects.all()
-#     serializer_class = RespostasSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-
+@csrf_exempt
+def perguntas(request):
+    if request.method == 'GET':
+        perguntas = Perguntas.objects.all()
+        perguntas = PerguntasSerializer(perguntas, many=True)
+        return JSONResponse(perguntas.data)

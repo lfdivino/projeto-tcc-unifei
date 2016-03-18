@@ -12,7 +12,7 @@ $(".btn-respostas").click(function(){
     };
 
     $.ajax({
-        url: '/resposta/',
+        url: '/api/respostas/',
         type: 'POST',
         dataType: "json",
         contentType: 'application/json; charset=UTF-8',
