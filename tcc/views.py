@@ -86,11 +86,16 @@ class JSONResponse(HttpResponse):
 
 
 @csrf_exempt
-def respostas(request):
+def respostas(request, question_id=None):
     if request.method == 'GET':
-        respostas = Respostas.objects.all()
-        respostas = RespostasSerializer(respostas, many=True)
-        return JSONResponse(respostas.data)
+        if question_id:
+            respostas = Respostas.objects.filter(id_pergunta=question_id)
+            respostas = RespostasSerializer(respostas, many=True)
+            return JSONResponse(respostas.data)
+        else:
+            respostas = Respostas.objects.all()
+            respostas = RespostasSerializer(respostas, many=True)
+            return JSONResponse(respostas.data)
 
     elif request.method == 'POST':
         json_resposta = JSONParser().parse(request)
