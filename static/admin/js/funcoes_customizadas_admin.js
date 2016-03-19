@@ -41,6 +41,9 @@ $("#btn_gerar_informacao_visual").click(function(){
     if ($("#pergunta").hasClass("invisivel") == false) {
         gerar_grafico_pizza_pergunta($("#pergunta").val());
         $("#titulo_analise").html("<h2>" + $("#pergunta option:selected").text() + "</h2>");
+    } else if ($("#tipo_grafico").val() == "grafico_barras") {
+        gerar_grafico_barras_respostas();
+        $("#titulo_analise").html("<h2>Grafico de barras relacinando as Perguntas x Respostas</h2>");
     }
 });
 
@@ -76,7 +79,7 @@ function gerar_grafico_pizza_pergunta(id_pergunta) {
                         console.log("Desculpe, estamos sem nenhuma resposta.");
                     }
             });
-            
+
             var chart = c3.generate({
                 data: {
                     // iris data from R
@@ -99,32 +102,88 @@ function gerar_grafico_pizza_pergunta(id_pergunta) {
         }
     });
 }
-//var chart = c3.generate({
-//    data: {
-//        x : 'x',
-//        columns: [
-//            ['x', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01'],
-//            ['data1', 30, 200, 100, 400, 150, 250],
-//            ['data2', 130, 100, 140, 200, 150, 50],
-//            ['data3', 130, -150, 200, 300, -200, 100]
-//        ],
-//        type: 'bar'
-//    },
-//    axis: {
-//        x: {
-//            type: 'category',
-//            tick: {
-//                rotate: 75,
-//                multiline: false
-//            },
-//            height: 130
-//        }
-//    },
-//    bar: {
-//        width: {
-//            ratio: 0.5 // this makes bar width 50% of length between ticks
-//        }
-//        // or
-//        //width: 100 // this makes bar width 100px
-//    }
-//});
+
+function gerar_grafico_barras_respostas() {
+    var respostas_1 = ['1'];
+    var respostas_2 = ['2'];
+    var respostas_3 = ['3'];
+    var respostas_4 = ['4'];
+    var respostas_5 = ['5'];
+    var eixo_x = ['x'];
+    $("#pergunta > option").each(function() {
+        if (this.value != 0){
+            eixo_x.push(this.text);
+        }
+    });
+    for (var i = 1; i <= $("#pergunta option").size(); i++){
+        respostas_1.push(0);
+        respostas_2.push(0);
+        respostas_3.push(0);
+        respostas_4.push(0);
+        respostas_5.push(0);
+    }
+
+    $.ajax({
+        url: '/api/respostas/',
+        type: 'GET',
+        dataType: "json",
+        contentType: 'application/json; charset=UTF-8',
+        success:function(result){
+            $.each(result, function(i, resposta) {
+                switch (resposta.resposta) {
+                    case 1:
+                        respostas_1[resposta.id_pergunta] = respostas_1[resposta.id_pergunta] + 1;
+                    break;
+                    case 2:
+                        respostas_2[resposta.id_pergunta] = respostas_2[resposta.id_pergunta] + 1;
+                    break;
+                    case 3:
+                        respostas_3[resposta.id_pergunta] = respostas_3[resposta.id_pergunta] + 1;
+                    break;
+                    case 4:
+                        respostas_4[resposta.id_pergunta] = respostas_4[resposta.id_pergunta] +1;
+                    break;
+                    case 5:
+                        respostas_5[resposta.id_pergunta] = respostas_5[resposta.id_pergunta] + 1;
+                    default:
+                        console.log("Desculpe, estamos sem nenhuma resposta.");
+                    }
+            });
+
+            var chart = c3.generate({
+                data: {
+                    x : 'x',
+                    columns: [
+                        eixo_x,
+                        respostas_1,
+                        respostas_2,
+                        respostas_3,
+                        respostas_4,
+                        respostas_5
+                    ],
+                    type: 'bar'
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        tick: {
+                            rotate: 75,
+                            multiline: false
+                        },
+                        height: 130
+                    }
+                },
+                bar: {
+                    width: {
+                        ratio: 0.5 // this makes bar width 50% of length between ticks
+                    }
+                    // or
+                    //width: 100 // this makes bar width 100px
+                }
+            });
+        },
+        error: function(result){
+            alert("Aconteceu um problema ao buscar as respostas do sistema");
+        }
+    });
+}

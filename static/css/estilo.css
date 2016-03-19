@@ -1,3 +1,18 @@
+.bg_login_full {
+  background: url(../img/home_bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
 .navbar-default {
     background-color: #4682B4;
     border-color: #FFD700;
@@ -82,4 +97,13 @@
     background: #f6f6f6 none repeat scroll 0 0;
     border-top: 1px solid #e6e6e6;
     color: #aaa;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }

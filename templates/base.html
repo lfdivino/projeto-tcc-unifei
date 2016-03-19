@@ -35,15 +35,20 @@
   <body>
 
     {% include 'navbar.html' %}
+    <div id="bg_login">
+      <div class="container">
 
-    <div class="container">
+        {% block content %}
 
-      {% block content %}
+        {% endblock %}
 
-      {% endblock %}
-
-    </div> <!-- /container -->
-
+      </div>
+    </div><!-- /container -->
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
