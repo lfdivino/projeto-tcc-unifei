@@ -7,12 +7,12 @@
 
   <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-      <h1>Login</h1>
+      <h1 class="titulo-login">Conectar-se no sistema</h1>
       <form method="post" action=".">
         {% csrf_token %}
         {{ form|crispy }}
 
-        <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Submit' %}" />
+        <input class='btn btn-block btn-primary botao-login' type="submit" value="Entrar" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
     </div>
@@ -20,11 +20,13 @@
   </div>
   <div class='row'>
     <div class='col-sm-6 col-sm-offset-3 text-align-center'>
-      <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-      <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+      <div class="bg-register-forgot">
+         <p>Esqueceu a senha? <a href="{% url 'auth_password_reset' %}">Resetar senha</a>!</p>
+         <p>Ainda não fez seu cadastro? <a href="{% url 'registration_register' %}">Registrar</a>!</p>
+      </div>
     </div>
   </div>
-</div>
+
 <script>
   $("#bg_login").addClass("bg_login_full");
 </script>
