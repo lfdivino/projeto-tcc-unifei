@@ -187,3 +187,94 @@ function gerar_grafico_barras_respostas() {
         }
     });
 }
+
+function montar_tabela_respostas() {
+    var respostas_1 = ['1'];
+    var respostas_2 = ['2'];
+    var respostas_3 = ['3'];
+    var respostas_4 = ['4'];
+    var respostas_5 = ['5'];
+    var eixo_x = ['x'];
+    $("#pergunta > option").each(function() {
+        if (this.value != 0){
+            eixo_x.push(this.text);
+        }
+    });
+    for (var i = 1; i <= $("#pergunta option").size(); i++){
+        respostas_1.push(0);
+        respostas_2.push(0);
+        respostas_3.push(0);
+        respostas_4.push(0);
+        respostas_5.push(0);
+    }
+
+    $.ajax({
+        url: '/api/respostas/',
+        type: 'GET',
+        dataType: "json",
+        contentType: 'application/json; charset=UTF-8',
+        success:function(result){
+            $.each(result, function(i, resposta) {
+                switch (resposta.resposta) {
+                    case 1:
+                        respostas_1[resposta.id_pergunta] = respostas_1[resposta.id_pergunta] + 1;
+                    break;
+                    case 2:
+                        respostas_2[resposta.id_pergunta] = respostas_2[resposta.id_pergunta] + 1;
+                    break;
+                    case 3:
+                        respostas_3[resposta.id_pergunta] = respostas_3[resposta.id_pergunta] + 1;
+                    break;
+                    case 4:
+                        respostas_4[resposta.id_pergunta] = respostas_4[resposta.id_pergunta] +1;
+                    break;
+                    case 5:
+                        respostas_5[resposta.id_pergunta] = respostas_5[resposta.id_pergunta] + 1;
+                    default:
+                        console.log("Desculpe, estamos sem nenhuma resposta.");
+                    }
+            });
+
+                var tabela = "<div class='row'>";
+                tabela += "<div class='row'>";
+                    tabela += "<div class='col-md-1'>Pergunta</div>";
+                    tabela += "<div class='col-md-1'>Resposta 1</div>";
+                    tabela += "<div class='col-md-1'>Porcentagem</div>";
+                    tabela += "<div class='col-md-1'>Resposta 2</div>";
+                    tabela += "<div class='col-md-1'>Porcentagem</div>";
+                    tabela += "<div class='col-md-1'>Resposta 3</div>";
+                    tabela += "<div class='col-md-1'>Porcentagem</div>";
+                    tabela += "<div class='col-md-1'>Resposta 4</div>";
+                    tabela += "<div class='col-md-1'>Porcentagem</div>";
+                    tabela += "<div class='col-md-1'>Resposta 5</div>";
+                    tabela += "<div class='col-md-1'>Porcentagem</div>";
+                    tabela += "<div class='col-md-1'>Total</div>";
+                tabela += "</div>";
+
+                for (int i = 0; i < eixo_x.length; i++){
+                    var total = resposta_1[i] + resposta_2[i] + resposta_3[i] + resposta_4[i] + resposta_5[i];
+                    tabela += "<div class='row'>";
+                    tabela += "<div class='col-md-2'>" + eixo_x[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + resposta_1[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_1[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + resposta_2[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_2[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + resposta_3[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_3[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + resposta_4[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_4[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + resposta_5[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_5[i] + "</div>";
+                    tabela += "<div class='col-md-2'>" + total + "</div>";
+                    tabela += "</div>";
+                }
+
+                tabela += "</div>";
+
+
+        },
+        error: function(result){
+            alert("Aconteceu um problema ao buscar as respostas do sistema");
+        }
+    });
+}

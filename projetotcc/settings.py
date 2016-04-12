@@ -116,21 +116,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.join(BASE_DIR))
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    #os.path.join(PROJECT_ROOT, '../static'),
-)
-
+# PROJECT_ROOT = os.path.dirname(os.path.join(BASE_DIR))
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_URL = '/static/'
 #
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-#
-# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+# # Extra places for collectstatic to find static files.
+# STATICFILES_DIRS = (
+#     #os.path.join(PROJECT_ROOT, '../static'),
+# )
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 
 # Crispy Forms
@@ -138,7 +138,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 LOGIN_URL = 'accounts/login'
 ACCOUNT_ACTIVATION_DAYS = 0
-REGISTRATION_AUTO_LOGIN = False
+REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 

@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -37,8 +37,7 @@ class Respostas(models.Model):
     id = models.AutoField(primary_key=True)
     id_pergunta = models.ForeignKey(Perguntas)
     resposta = models.IntegerField(blank=False, null=False)
-    data_resposta = models.DateField(default='2016-03-03')
+    data_resposta = models.DateField(default=datetime.datetime.now)
 
     def __str__(self):
         return str(self.resposta)
-
