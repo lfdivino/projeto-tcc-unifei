@@ -1,30 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="login">
+    <h1 class="titulo-login">Siseel: Sistema multiplataforma para coleta de dados e tomadas de decisão</h1>
+    <div id="login" class="form-login">
         <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
         {% csrf_token %}
         {% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
         {% endif %}
-        <div class="control-group">
-            <label class="control-label" for="username">Username</label>
-            <div class="controls">
-                <input type="text" id="username" name="username"  placeholder="Username">
+        <div class="row row-spaces">
+            <div class="control-group">
+                <span class="label-login" for="username">Login</span>
+                <div class="controls">
+                    <input type="text" id="username" name="username"  placeholder="Username" class="form-control">
+                </div>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="password">Password</label>
-            <div class="controls">
-                <input type="password" name="password" id="password" placeholder="Password">
+        <div class="row row-spaces">
+            <div class="control-group">
+                <span class="label-login" for="password">Senha</span>
+                <div class="controls">
+                    <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                </div>
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn">Login</button>
-            </div>
+        <div class="row row-spaces">
+            <button type="submit" class="btn btn btn-primary btn-lg botao-login">Entrar</button>
         </div>
         </form>
     </div>
+<script>
 
+  $("#bg_login").addClass("bg_login_full");
+</script>
 {% endblock %}
