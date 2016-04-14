@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 __pycache__/
-local_settings.py
+/home/divino/Documents/teste/projeto-tcc-unifei/projetotcc/settings.py
 db.sqlite3
 media
+workspace.xml
