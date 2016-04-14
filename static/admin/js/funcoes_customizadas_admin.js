@@ -44,6 +44,8 @@ $("#btn_gerar_informacao_visual").click(function(){
     } else if ($("#tipo_grafico").val() == "grafico_barras") {
         gerar_grafico_barras_respostas();
         $("#titulo_analise").html("<h2>Grafico de barras relacinando as Perguntas x Respostas</h2>");
+    } else if ($("#tipo_exibicao_dados").val() == "tabela") {
+        montar_tabela_respostas();
     }
 });
 
@@ -235,9 +237,9 @@ function montar_tabela_respostas() {
                     }
             });
 
-                var tabela = "<div class='row'>";
-                tabela += "<div class='row'>";
-                    tabela += "<div class='col-md-1'>Pergunta</div>";
+                var tabela = "<div class='tabela'>";
+                tabela += "<div class='linha-tabela'>";
+                    tabela += "<div class='col-md-pergunta'>Pergunta</div>";
                     tabela += "<div class='col-md-1'>Resposta 1</div>";
                     tabela += "<div class='col-md-1'>Porcentagem</div>";
                     tabela += "<div class='col-md-1'>Resposta 2</div>";
@@ -251,27 +253,27 @@ function montar_tabela_respostas() {
                     tabela += "<div class='col-md-1'>Total</div>";
                 tabela += "</div>";
 
-                for (int i = 0; i < eixo_x.length; i++){
-                    var total = resposta_1[i] + resposta_2[i] + resposta_3[i] + resposta_4[i] + resposta_5[i];
-                    tabela += "<div class='row'>";
-                    tabela += "<div class='col-md-2'>" + eixo_x[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + resposta_1[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_1[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + resposta_2[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_2[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + resposta_3[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_3[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + resposta_4[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_4[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + resposta_5[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + (total/100)*resposta_5[i] + "</div>";
-                    tabela += "<div class='col-md-2'>" + total + "</div>";
+                for (var i = 1; i < eixo_x.length; i++){
+                    var total = respostas_1[i] + respostas_2[i] + respostas_3[i] + respostas_4[i] + respostas_5[i];
+                    tabela += "<div class='linha-tabela'>";
+                    tabela += "<div class='col-md-pergunta'>" + eixo_x[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + respostas_1[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + ((respostas_1[i]/total)*100).toFixed(2) + "%</div>";
+                    tabela += "<div class='col-md-1'>" + respostas_2[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + ((respostas_2[i]/total)*100).toFixed(2) + "%</div>";
+                    tabela += "<div class='col-md-1'>" + respostas_3[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + ((respostas_3[i]/total)*100).toFixed(2) + "%</div>";
+                    tabela += "<div class='col-md-1'>" + respostas_4[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + ((respostas_4[i]/total)*100).toFixed(2) + "%</div>";
+                    tabela += "<div class='col-md-1'>" + respostas_5[i] + "</div>";
+                    tabela += "<div class='col-md-1'>" + ((respostas_5[i]/total)*100).toFixed(2) + "%</div>";
+                    tabela += "<div class='col-md-1'>" + total + "</div>";
                     tabela += "</div>";
                 }
 
                 tabela += "</div>";
 
-
+                $(".dados-processados").html(tabela);
         },
         error: function(result){
             alert("Aconteceu um problema ao buscar as respostas do sistema");
