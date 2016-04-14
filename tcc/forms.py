@@ -67,4 +67,5 @@ class RegistrationForm(UserCreationForm):
             user.is_active = False # not active until he opens activation link
             user.save()
 
+
         return user

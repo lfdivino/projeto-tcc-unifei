@@ -3,6 +3,12 @@
 *.pot
 *.pyc
 __pycache__/
-local_settings.py
+<<<<<<< HEAD
+projetotcc/settings.py
+=======
+/home/divino/Documents/teste/projeto-tcc-unifei/projetotcc/settings.py
+/home/divino/Documents/teste/projeto-tcc-unifei/tcc/migrations
+>>>>>>> c47fc278189ec129778066e4b18821208dc5a6e4
 db.sqlite3
 media
+workspace.xml

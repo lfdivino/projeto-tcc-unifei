@@ -20,8 +20,6 @@ urlpatterns = [
     url(r'^confirm/(?P<activation_key>\w+)/', ('tcc.views.register_confirm')),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^login/$', 'tcc.views.login_user', name='login'),
-
-
 ]
 
 if settings.DEBUG:

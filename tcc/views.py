@@ -210,6 +210,7 @@ def register_success(request):
         'title': 'Obrigado por registrar!'
     }
 
+
     return render(request, "register_success.html", context)
 
 

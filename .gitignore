@@ -4,6 +4,7 @@
 *.pyc
 __pycache__/
 projetotcc/settings.py
+tcc/migrations
 db.sqlite3
 media
 workspace.xml
