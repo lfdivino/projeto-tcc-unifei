@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^login/$', 'tcc.views.login_user', name='login'),
 ]
 
-from projetotcc import settings
 if not settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.contrib.staticfiles.views', {'document_root': settings.STATIC_ROOT}),
