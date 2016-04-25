@@ -168,7 +168,7 @@ def register_user(request):
 
             activation_key = hashlib.sha1(salted).hexdigest()
 
-            key_expires = datetime.datetime.today() + datetime.timedelta(2)
+            key_expires = datetime.datetime.today() + datetime.timedelta(3)
 
             #Get user by username
             user=User.objects.get(username=username)
@@ -180,8 +180,7 @@ def register_user(request):
 
             # Send email with activation key
             email_subject = 'Siseel: Ativação de registro'
-            email_body = "Olá %s, obrigado por se registrar. Para ativar a sua conta, clique no link a seguir em até \
-            48hours http://127.0.0.1:8000/confirm/%s" % (username, activation_key)
+            email_body = "Olá %s, obrigado por se registrar. Para ativar a sua conta, clique no link a seguir em até 72 horas http://http://siseel.herokuapp.com/confirm/%s" % (username, activation_key)
 
             send_mail(email_subject, email_body, 'lf.divino@yahoo.com',
                 [email], fail_silently=False)
