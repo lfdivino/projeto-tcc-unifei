@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^sign_up/', ('tcc.views.register_user'), name='register'),
     url(r'^register_success/', ('tcc.views.register_success')),
+    url(r'^secesso_ativacao/', ('tcc.views.register_success')),
     url(r'^confirm/(?P<activation_key>\w+)/', ('tcc.views.register_confirm'), name='register_confirm'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^login/$', 'tcc.views.login_user', name='login'),

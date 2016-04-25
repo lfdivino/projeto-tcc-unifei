@@ -207,7 +207,7 @@ def register_confirm(request, activation_key):
     user = user_profile.user
     user.is_active = True
     user.save()
-    return render_to_response('home.html')
+    return render_to_response('sucesso_ativacao.html')
 
 
 def register_success(request):
@@ -216,6 +216,14 @@ def register_success(request):
     }
 
     return render(request, "register_success.html", context)
+
+
+def sucesso_ativacao(request):
+    context = {
+        'title': 'Registro ativado com sucesso!'
+    }
+
+    return render(request, "sucesso_ativacao.html", context)
 
 
 def login_user(request):
