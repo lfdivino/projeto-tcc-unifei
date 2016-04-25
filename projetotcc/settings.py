@@ -25,7 +25,7 @@ SECRET_KEY = '9bib5ly8j834ewld(i_b@ox(zu6nro9-t7e&+s!5y_m+ox=&j)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_HOST_USER = 'lf.divino@yahoo.com'
