@@ -207,7 +207,7 @@ def register_confirm(request, activation_key):
     user = user_profile.user
     user.is_active = True
     user.save()
-    return render_to_response('/')
+    return render_to_response('home.html')
 
 
 def register_success(request):
