@@ -20,16 +20,13 @@ urlpatterns = [
     url(r'^confirm/(?P<activation_key>\w+)/', ('tcc.views.register_confirm'), name='register_confirm'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^login/$', 'tcc.views.login_user', name='login'),
-    # url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-    #         'document_root': settings.STATIC_ROOT,
-    #     }),
 ]
 
-urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-    )
+# urlpatterns += patterns('',
+#         url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+#             'document_root': settings.STATIC_ROOT,
+#         }),
+#     )
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
