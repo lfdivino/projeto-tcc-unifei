@@ -10,8 +10,16 @@
   padding-top: 20px;
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   /* Margin bottom by footer height */
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 70px;
 }
 
