@@ -6,6 +6,7 @@ $(window).resize(function(){
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
         $("#footer").addClass("footer-bottom");
+    }else{
         $(".resposta_1").text("1");
         $(".resposta_2").text("2");
         $(".resposta_3").text("3");
