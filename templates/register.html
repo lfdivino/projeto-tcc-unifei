@@ -8,17 +8,17 @@
             <h2>Preencha os campos com seus dados para realizar o registro</h2>
         </div>
         <div class="panel-body">
-            <div class="fieldWrapper">
+            <div class="row">
                 <label>Primeiro Nome</label><br>
                 {{ form.first_name }}
             </div>
             <br>
-            <div class="fieldWrapper">
+            <div class="row">
                 <label>Ultimo Nome</label><br>
                 {{ form.last_name }}
             </div>
             <br>
-            <div class="fieldWrapper">
+            <div class="row">
                 {{ form.email.errors }}
                 <label>E-mail</label><br>
                 {{ form.email }}
@@ -32,25 +32,26 @@
             <h2>Dados para o login</h2>
         </div>
         <div class="panel-body">
-            <div class="fieldWrapper">
+            <div class="row">
             {{form.errors.values.0}}
                 <label>Usuario</label><br>
                 {{ form.username }}
             </div>
             <br>
-            <div class="fieldWrapper">
+            <div class="row">
                 {{form.errors.values.1}}
                 <label>Senha</label><br>
                 {{ form.password1 }}
             </div>
             <br>
-            <div class="fieldWrapper">
+            <div class="row">
                 <label>Confirmar Senha</label><br>
                 {{ form.password2 }}
             </div>
         </div>
-        <input type="submit" name="submit" class="btn btn-primary" value="Create account">
-        <div class="panel-footer">
+
+        <div class="panel-footer" style="text-align: center">
+            <input type="submit" name="submit" class="btn btn-primary" value="Criar Registro">
         </div>
     </div>
 </form>
