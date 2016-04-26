@@ -187,3 +187,8 @@ body {
         display: none;
     }
 }
+
+.page-row {
+  display: table-row;
+  height: 100px;
+}
