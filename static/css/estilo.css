@@ -173,9 +173,10 @@ body {
     #menu {
         width:1.4em;
         display: block;
-        background:#ddd;
-        font-size:1.35em;
+        background:#4682B4;
+        font-size: 28px;
         text-align: center;
+        color: #fff;
     }
     #nav.js {
         display: none;
