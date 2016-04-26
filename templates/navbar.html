@@ -6,7 +6,7 @@
         <li><a href="/">Home</a></li>
         <!--<li><a href="/configuracao">Configuracao</a></li>-->
         <!--<li><a href="/contato">Contato</a></li>-->
-      </ul>
+      <!--</ul>-->
       <!--<ul class="nav navbar-nav navbar-right">-->
         {% if request.user.is_authenticated %}
           <li><a>Olá {{ request.user }}</a></li>
@@ -16,7 +16,7 @@
           <li><a href="{% url 'register' %}">Registrar</a></li>
 
         {% endif %}
-      <!--</ul>-->
+      </ul>
     <!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
   </div>
 </nav>
