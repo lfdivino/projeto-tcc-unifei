@@ -107,7 +107,6 @@ body {
 
 .footer {
     position: absolute;
-    /*bottom: 0;*/
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
@@ -117,6 +116,10 @@ body {
     text-align: center;
     color: #fff;
     font-size: 14px;
+}
+
+.footer-bottom {
+    bottom: 0;
 }
 
 .bg-register-forgot{

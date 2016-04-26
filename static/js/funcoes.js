@@ -5,8 +5,11 @@ $("#menu").click(function(){
 $(window).resize(function(){
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
+        $("#footer").addClass("footer-bottom");
     }
 });
+
+
 
 $(".btn-respostas").click(function(){
     var col = $(this).parent();
