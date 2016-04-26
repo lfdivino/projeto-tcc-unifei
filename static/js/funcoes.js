@@ -2,6 +2,25 @@ $("#nav").addClass("js").before('<div id="menu">&#9776;</div>');
 $("#menu").click(function(){
     $("#nav").toggle();
 });
+$(document).ready(function() {
+    if(window.innerWidth > 768) {
+        $("#nav").removeAttr("style");
+        $(".resposta_1").text("Muito Ruim");
+        $(".resposta_2").text("Ruim");
+        $(".resposta_3").text("Neutro");
+        $(".resposta_4").text("Bom");
+        $(".resposta_5").text("Muito Bom");
+    }
+    if(window.innerWidth < 768) {
+        $(".resposta_1").text("1");
+        $(".resposta_2").text("2");
+        $(".resposta_3").text("3");
+        $(".resposta_4").text("4");
+        $(".resposta_5").text("5");
+        $("#footer").removeClass("footer-bottom");
+    }
+}
+
 $(window).resize(function(){
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
