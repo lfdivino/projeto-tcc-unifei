@@ -2,6 +2,7 @@ $("#nav").addClass("js").before('<div id="menu">&#9776;</div>');
 $("#menu").click(function(){
     $("#nav").toggle();
 });
+
 $(document).ready(function() {
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
@@ -19,7 +20,7 @@ $(document).ready(function() {
         $(".resposta_5").text("5");
         $("#footer").removeClass("footer-bottom");
     }
-}
+});
 
 $(window).resize(function(){
     if(window.innerWidth > 768) {
