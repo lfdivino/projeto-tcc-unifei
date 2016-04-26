@@ -6,7 +6,13 @@ $(window).resize(function(){
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
         $("#footer").addClass("footer-bottom");
-    }else{
+        $(".resposta_1").text("Muito Ruim");
+        $(".resposta_2").text("Ruim");
+        $(".resposta_3").text("Neutro");
+        $(".resposta_4").text("Bom");
+        $(".resposta_5").text("Muito Bom");
+    }
+    if(window.innerWidth < 768) {
         $(".resposta_1").text("1");
         $(".resposta_2").text("2");
         $(".resposta_3").text("3");
@@ -14,8 +20,6 @@ $(window).resize(function(){
         $(".resposta_5").text("5");
     }
 });
-
-
 
 $(".btn-respostas").click(function(){
     var col = $(this).parent();
