@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row">
+<div class="row" style="margin-top: 10px;">
 <form class="form-signup" action="/sign_up/" method="post">{% csrf_token %}
     <div class="panel panel-form">
         <div class="panel-heading">
-            <h2>Preencha os campos com seus dados para realizar o registro</h2>
+            <h3>Preencha os campos com seus dados para realizar o registro</h3>
         </div>
         <div class="panel-body">
             <div class="row">
-                <label>Primeiro Nome</label><br>
-                {{ form.first_name }}
+                <div class="col-xs-2 col-md-2"><label>Primeiro Nome</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.first_name }}</div>
             </div>
             <br>
             <div class="row">
-                <label>Ultimo Nome</label><br>
-                {{ form.last_name }}
+                <div class="col-xs-2 col-md-2"><label>Ultimo Nome</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.last_name }}</div>
             </div>
             <br>
             <div class="row">
                 {{ form.email.errors }}
-                <label>E-mail</label><br>
-                {{ form.email }}
+                <div class="col-xs-2 col-md-2"><label>E-mail</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.email }}</div>
             </div>
         </div>
         <div class="panel-footer">
@@ -29,24 +29,24 @@
     </div>
     <div class="panel panel-form">
         <div class="panel-heading">
-            <h2>Dados para o login</h2>
+            <h3>Dados para o login</h3>
         </div>
         <div class="panel-body">
             <div class="row">
             {{form.errors.values.0}}
-                <label>Usuario</label><br>
-                {{ form.username }}
+                <div class="col-xs-2 col-md-2"><label>Usuario</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.username }}</div>
             </div>
             <br>
             <div class="row">
                 {{form.errors.values.1}}
-                <label>Senha</label><br>
-                {{ form.password1 }}
+                <div class="col-xs-2 col-md-2"><label>Senha</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.password1 }}</div>
             </div>
             <br>
             <div class="row">
-                <label>Confirmar Senha</label><br>
-                {{ form.password2 }}
+                <div class="col-xs-2 col-md-2"><label>Confirmar Senha</label></div>
+                <div class="col-xs-2 col-md-2">{{ form.password2 }}</div>
             </div>
         </div>
 
