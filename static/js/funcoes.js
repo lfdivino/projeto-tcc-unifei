@@ -18,7 +18,6 @@ $(document).ready(function() {
         $(".resposta_3").text("3");
         $(".resposta_4").text("4");
         $(".resposta_5").text("5");
-        $("#footer").removeClass("footer-bottom");
     }
 });
 
@@ -37,7 +36,6 @@ $(window).resize(function(){
         $(".resposta_3").text("3");
         $(".resposta_4").text("4");
         $(".resposta_5").text("5");
-        $("#footer").removeClass("footer-bottom");
     }
 });
 
