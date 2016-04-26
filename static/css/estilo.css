@@ -188,7 +188,6 @@ body {
     }
 }
 
-.page-row {
-  display: table-row;
-  height: 100px;
+.container-full {
+    height: 100%;
 }
