@@ -200,3 +200,22 @@ body {
 .container-full {
     height: 100%;
 }
+
+.desc_home_big {
+    font-size: 16px;
+}
+
+.desc_home_mobile {
+    font-size: 10px;
+}
+
+.perguntas-espacamento-big {
+    margin-top: 5%;
+    position: relative;
+    margin-top: 10%;
+}
+
+.perguntas-espacamento-mobile {
+    position: relative;
+    margin-top: 3%;
+}

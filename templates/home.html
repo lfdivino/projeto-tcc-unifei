@@ -13,10 +13,10 @@
 </style>
 
 {% block content %}
-<h3>O Siseel foi desenvolvido para auxiliar na coleta das respostas do questionario do professor José Carlos Grilo Rodrigues elaborado para os alunos do curso de Engenharia Eletrica da UNIFEI<br />
+<div id="desc_home">O Siseel foi desenvolvido para auxiliar na coleta das respostas do questionario do professor José Carlos Grilo Rodrigues elaborado para os alunos do curso de Engenharia Eletrica da UNIFEI<br />
 <br />
-Para responder as perguntas basta clicar no botao que representa a sua opinião e automaticamente a próxima pergunta será exibida para você.</h3>
-<div class="row" style="position: relative; margin-top: 15%">
+Para responder as perguntas basta clicar no botao que representa a sua opinião e automaticamente a próxima pergunta será exibida para você.</div>
+<div id="perguntas" class="row" style="position: relative; margin-top: 10%">
     {% for pergunta in perguntas %}
         {% if pergunta.id == primeira_pergunta %}
             <div id="{{pergunta.id}}" class="perguntas visivel" style='position: absolute; top:0;left:0; min-width: 100%'>
