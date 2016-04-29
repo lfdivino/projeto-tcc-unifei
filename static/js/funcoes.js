@@ -6,6 +6,7 @@ $("#menu").click(function(){
 $(document).ready(function() {
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
+        $("#footer").addClass("footer-bottom");
         $(".resposta_1").text("Muito Ruim");
         $(".resposta_2").text("Ruim");
         $(".resposta_3").text("Neutro");
@@ -24,6 +25,7 @@ $(document).ready(function() {
 $(window).resize(function(){
     if(window.innerWidth > 768) {
         $("#nav").removeAttr("style");
+        $("#footer").addClass("footer-bottom");
         $(".resposta_1").text("Muito Ruim");
         $(".resposta_2").text("Ruim");
         $(".resposta_3").text("Neutro");
