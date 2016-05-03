@@ -166,7 +166,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 SUIT_CONFIG = {
     'ADMIN_NAME': 'TCC Divino',
     'MENU': (
-        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
+        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group', 'userProfile')},
         {'app': 'tcc', 'icon': 'icon-cog', 'models': (
             'tcc.Perguntas',
             'tcc.Respostas',

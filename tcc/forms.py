@@ -42,7 +42,7 @@ class PerguntasRespondidasUsuariosForm(forms.ModelForm):
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'placeholder': 'E-mail adress'}))
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'placeholder': 'E-mail'}))
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
 
@@ -57,7 +57,7 @@ class RegistrationForm(UserCreationForm):
             User._default_manager.get(email=email)
         except User.DoesNotExist:
             return email
-        raise forms.ValidationError('duplicate email')
+        raise forms.ValidationError('Email ja utilizado!')
 
     #modify save() method so that we can set user.is_active to False when we first create our user
     def save(self, commit=True):

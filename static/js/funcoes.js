@@ -4,13 +4,14 @@ $("#menu").click(function(){
 });
 
 $(document).ready(function() {
-    if(window.innerWidth > 768) {
+    if(window.innerWidth >= 768) {
         $("#nav").removeAttr("style");
         $("#desc_home").removeClass("desc_home_mobile");
         $("#desc_home").addClass("desc_home_big");
         $("#perguntas").removeClass("perguntas-espacamento-mobile");
         $("#perguntas").addClass("perguntas-espacamento-big");
         $("#footer").addClass("footer-bottom");
+        $("h2").css("font-size", "30px");
         $(".resposta_1").text("Muito Ruim");
         $(".resposta_2").text("Ruim");
         $(".resposta_3").text("Neutro");
@@ -22,6 +23,7 @@ $(document).ready(function() {
         $("#desc_home").addClass("desc_home_mobile");
         $("#perguntas").removeClass("perguntas-espacamento-big");
         $("#perguntas").addClass("perguntas-espacamento-mobile");
+        $("h2").css("font-size", "16px");
         $(".resposta_1").text("1");
         $(".resposta_2").text("2");
         $(".resposta_3").text("3");
@@ -31,13 +33,14 @@ $(document).ready(function() {
 });
 
 $(window).resize(function(){
-    if(window.innerWidth > 768) {
+    if(window.innerWidth >= 768) {
         $("#nav").removeAttr("style");
         $("#desc_home").removeClass("desc_home_mobile");
         $("#desc_home").addClass("desc_home_big");
         $("#perguntas").removeClass("perguntas-espacamento-mobile");
         $("#perguntas").addClass("perguntas-espacamento-big");
         $("#footer").addClass("footer-bottom");
+        $("h2").css("font-size", "30px");
         $(".resposta_1").text("Muito Ruim");
         $(".resposta_2").text("Ruim");
         $(".resposta_3").text("Neutro");
@@ -49,6 +52,7 @@ $(window).resize(function(){
         $("#desc_home").addClass("desc_home_mobile");
         $("#perguntas").removeClass("perguntas-espacamento-big");
         $("#perguntas").addClass("perguntas-espacamento-mobile");
+        $("h2").css("font-size", "16px");
         $(".resposta_1").text("1");
         $(".resposta_2").text("2");
         $(".resposta_3").text("3");
