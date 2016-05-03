@@ -50,17 +50,18 @@ $("#btn_gerar_informacao_visual").click(function(){
 });
 
 function gerar_grafico_pizza_pergunta(id_pergunta) {
-    var respostas_1 = ['1', 0];
-    var respostas_2 = ['2', 0];
-    var respostas_3 = ['3', 0];
-    var respostas_4 = ['4', 0];
-    var respostas_5 = ['5', 0];
+    var respostas_1 = ['Muito Ruim', 0];
+    var respostas_2 = ['Ruim', 0];
+    var respostas_3 = ['Neutro', 0];
+    var respostas_4 = ['Bom', 0];
+    var respostas_5 = ['Muito Bom', 0];
     $.ajax({
         url: '/api/respostas/' + id_pergunta,
         type: 'GET',
         dataType: "json",
         contentType: 'application/json; charset=UTF-8',
         success:function(result){
+            $("#tabela-dados").html("");
             $.each(result, function(i, resposta) {
                 switch (resposta.resposta) {
                     case 1:
@@ -106,11 +107,11 @@ function gerar_grafico_pizza_pergunta(id_pergunta) {
 }
 
 function gerar_grafico_barras_respostas() {
-    var respostas_1 = ['1'];
-    var respostas_2 = ['2'];
-    var respostas_3 = ['3'];
-    var respostas_4 = ['4'];
-    var respostas_5 = ['5'];
+    var respostas_1 = ['Muito Ruim'];
+    var respostas_2 = ['Ruim'];
+    var respostas_3 = ['Neutro'];
+    var respostas_4 = ['Bom'];
+    var respostas_5 = ['Muito Bom'];
     var eixo_x = ['x'];
     $("#pergunta > option").each(function() {
         if (this.value != 0){
@@ -131,6 +132,7 @@ function gerar_grafico_barras_respostas() {
         dataType: "json",
         contentType: 'application/json; charset=UTF-8',
         success:function(result){
+            $("#tabela-dados").html("");
             $.each(result, function(i, resposta) {
                 switch (resposta.resposta) {
                     case 1:
@@ -272,8 +274,9 @@ function montar_tabela_respostas() {
                 }
 
                 tabela += "</div>";
-
-                $(".dados-processados").html(tabela);
+                $("#chart").html("");
+                $("#titulo_analise").html("");
+                $("#tabela-dados").html(tabela);
         },
         error: function(result){
             alert("Aconteceu um problema ao buscar as respostas do sistema");
