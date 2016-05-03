@@ -17,6 +17,7 @@ $(document).ready(function() {
         $(".resposta_3").text("Neutro");
         $(".resposta_4").text("Bom");
         $(".resposta_5").text("Muito Bom");
+        $(".panel-footer").text("Para responder basta clicar em um dos botoes com a resposta.");
     }
     if(window.innerWidth < 768) {
         $("#desc_home").removeClass("desc_home_big");
@@ -29,6 +30,7 @@ $(document).ready(function() {
         $(".resposta_3").text("3");
         $(".resposta_4").text("4");
         $(".resposta_5").text("5");
+        $(".panel-footer").text("Legenda: 1 - Muito Ruim | 2 - Ruim | 3 - Neutro | 4 - Bom | 5 - Muito bom");
     }
 });
 
@@ -46,6 +48,7 @@ $(window).resize(function(){
         $(".resposta_3").text("Neutro");
         $(".resposta_4").text("Bom");
         $(".resposta_5").text("Muito Bom");
+        $(".panel-footer").text("Para responder basta clicar em um dos botoes com a resposta.");
     }
     if(window.innerWidth < 768) {
         $("#desc_home").removeClass("desc_home_big");
@@ -58,6 +61,7 @@ $(window).resize(function(){
         $(".resposta_3").text("3");
         $(".resposta_4").text("4");
         $(".resposta_5").text("5");
+        $(".panel-footer").text("Legenda: 1 - Muito Ruim | 2 - Ruim | 3 - Neutro | 4 - Bom | 5 - Muito bom");
     }
 });
 
