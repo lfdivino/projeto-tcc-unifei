@@ -21,7 +21,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9bib5ly8j834ewld(i_b@ox(zu6nro9-t7e&+s!5y_m+ox=&j)'
+SECRET_KEY = 'xxx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,11 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = 'smtp.mail.yahoo.com'
-EMAIL_HOST_USER = 'lf.divino@yahoo.com'
-EMAIL_HOST_PASSWORD = 'sampa1621'
+EMAIL_HOST_USER = 'xxx'
+EMAIL_HOST_PASSWORD = 'xxx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'lf.divino@yahoo.com'
+DEFAULT_FROM_EMAIL = 'xxx'
 
 
 # Application definition
@@ -107,9 +107,9 @@ WSGI_APPLICATION = 'projetotcc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd877aun4hqhsce',
-        'USER': 'jqnemjwrdqhjpf',
-        'PASS': 'rWDbrgFSODQHD82FOeZrwI_2b2'
+        'NAME': 'xxx',
+        'USER': 'xxx',
+        'PASS': 'xxx'
     }
 }
 
